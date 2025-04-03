@@ -218,14 +218,14 @@ export default function FetchStudents() {
                   <td className="px-3 py-2 text-sm md:text-base hidden md:table-cell">
                     {student.gender}
                   </td>
-                  <td className="px-3 py-2 text-center">
-                    <button
-                      onClick={() => handleDelete(student.usn)}
-                      className="bg-red-600 text-white px-2 py-1 rounded text-sm hover:bg-red-700"
-                    >
-                      Delete
-                    </button>
-                  </td>
+                  // <td className="px-3 py-2 text-center">
+                  //   // <button
+                  //   //   onClick={() => handleDelete(student.usn)}
+                  //   //   className="bg-red-600 text-white px-2 py-1 rounded text-sm hover:bg-red-700"
+                  //   // >
+                  //   //   Delete
+                  //   // </button>
+                  // </td>
                 </tr>
               ))}
             </tbody>
