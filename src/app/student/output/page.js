@@ -1,4 +1,3 @@
-// File: FetchStudents.js
 "use client";
 import React, { useState, useEffect } from "react";
 import { supabase } from "@/app/link/lib";
@@ -20,7 +19,6 @@ export default function FetchStudents() {
         setViewMode("table");
       }
     };
-
 
     handleResize();
 
@@ -51,27 +49,6 @@ export default function FetchStudents() {
       console.error("Unexpected error:", err);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleDelete = async (usn) => {
-    if (window.confirm("Are you sure you want to delete this student?")) {
-      try {
-        const { error } = await supabase
-          .from("student")
-          .delete()
-          .eq("usn", usn);
-
-        if (error) {
-          alert("Error deleting student: " + error.message);
-        } else {
-          alert("Student deleted successfully!");
-          fetchStudents(); // Refresh the list
-        }
-      } catch (err) {
-        console.error("Unexpected error during deletion:", err);
-        alert("An unexpected error occurred");
-      }
     }
   };
 
@@ -106,14 +83,6 @@ export default function FetchStudents() {
         <p>
           <span className="font-medium">Address:</span> {student.address}
         </p>
-      </div>
-      <div className="mt-3">
-        <button
-          onClick={() => handleDelete(student.usn)}
-          className="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700 w-full"
-        >
-          Delete
-        </button>
       </div>
     </div>
   );
@@ -189,9 +158,6 @@ export default function FetchStudents() {
                 <th className="px-3 py-2 text-left text-sm md:text-base hidden md:table-cell">
                   Gender
                 </th>
-                <th className="px-3 py-2 text-center text-sm md:text-base">
-                  Actions
-                </th>
               </tr>
             </thead>
             <tbody>
@@ -218,14 +184,6 @@ export default function FetchStudents() {
                   <td className="px-3 py-2 text-sm md:text-base hidden md:table-cell">
                     {student.gender}
                   </td>
-                  // <td className="px-3 py-2 text-center">
-                  //   // <button
-                  //   //   onClick={() => handleDelete(student.usn)}
-                  //   //   className="bg-red-600 text-white px-2 py-1 rounded text-sm hover:bg-red-700"
-                  //   // >
-                  //   //   Delete
-                  //   // </button>
-                  // </td>
                 </tr>
               ))}
             </tbody>
